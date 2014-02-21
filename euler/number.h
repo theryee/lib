@@ -1,6 +1,8 @@
 #ifndef NUMBER_H
 #define NUMBER_H
 
+#include <string.h>
+
 int gcd(int a, int b){
 	return b==0 ? a : gcd( b, a%b );
 }
@@ -69,6 +71,22 @@ long long sqrtll(long long n){
 			hi = pivot;
 	}
 	return lo;
+}
+
+bool ispan(int n){
+	int counts[10];
+	memset(counts,0,sizeof(counts));
+	while(n){
+		if( ++counts[n%10] > 1 )
+			return false;
+		n /= 10;
+	}
+
+	for(int i=1; i<=9; i++)
+		if( counts[i] != 1 )
+			return false;
+	
+	return true;
 }
 
 #endif

@@ -128,6 +128,15 @@ public:
 		return buf == right.buf;
 	}
 
+	int operator[](const int & index) const {
+		return buf[index];
+	}
+
+	BigInt& operator=(const BigInt & right){
+		this->buf = right.buf;
+		return *this;
+	}
+
 private:
 	std::vector<int> buf;
 };
